@@ -21,6 +21,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:timezone/data/latest.dart' as tz_data;
 import 'package:timezone/timezone.dart' as tz_zone;
 
+import 'gameMagic.dart';
 import 'loader.dart';
 
 // ============================================================================
@@ -748,7 +749,7 @@ Future<void> infinitySpiritPostStat({
       'timestart': infinitySpiritTimeStart,
       'timefinsh': infinitySpiritTimeFinish,
       'url': infinitySpiritResolvedUrl,
-      'appleID': '6758657360',
+      'appleID': '6763529951',
       'open_count': '$infinitySpiritAppSid/$infinitySpiritTimeStart',
     };
 
@@ -1388,7 +1389,7 @@ class _InfinitySpiritHarborState extends State<InfinitySpiritHarbor>
             context,
             MaterialPageRoute<Widget>(
               builder: (BuildContext context) =>
-                  InfinitySpiritTableView(infinitySpiritUriValue),
+                  InfinityMagicTableView(infinitySpiritUriValue),
             ),
                 (Route<dynamic> infinitySpiritRoute) => false,
           );
@@ -1932,6 +1933,15 @@ class _InfinitySpiritHarborState extends State<InfinitySpiritHarbor>
   void infinitySpiritHandleServerSavedata(
       String infinitySpiritSavedata) {
     print('onServerResponse savedata: $infinitySpiritSavedata');
+    if(infinitySpiritSavedata=='false') {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute<Widget>(
+          builder: (BuildContext context) =>
+              SimpleFullInAppWebViewPage(),
+        ),
+      );
+    }
   }
 
   Color infinitySpiritParseHexColor(String infinitySpiritHex) {
